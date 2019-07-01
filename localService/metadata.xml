@@ -1,0 +1,179 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZMMO_MIGO_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="INVDET" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="VBELN"/>
+				</Key>
+				<Property Name="VBELN" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery"/>
+				<Property Name="POSNR" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="MATNR" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="MAKTX" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="NTGEW" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Net Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="CHARG" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="GEWEI" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Weight unit" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+				<Property Name="NAME1" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="BOLNR" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Bill of Lading"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="EBELN" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="NOWT" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="HTEXT1" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="c" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="HTEXT2" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="c" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="SIGNI" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Container ID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="ONTGEW" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Net Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<NavigationProperty Name="DELVHUNAV" Relationship="ZMMO_MIGO_SRV.DELVHUASS" FromRole="FromRole_DELVHUASS" ToRole="ToRole_DELVHUASS"/>
+			</EntityType>
+			<EntityType Name="INVDETHU" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="VBELN"/>
+					<PropertyRef Name="POSNR"/>
+					<PropertyRef Name="PALLET"/>
+				</Key>
+				<Property Name="VBELN" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:sortable="false"/>
+				<Property Name="POSNR" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item" sap:sortable="false"/>
+				<Property Name="PALLET" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Pallet" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="FWEIGHT" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="First Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="SWEIGHT" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Second Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="GEWEI" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Weight unit" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+				<Property Name="BAGWT" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Bag Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="BRGEW" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Gross weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="BAGTYP" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Bag Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="PWEIGHT" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Pallet Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="NOBAG" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="No of Bags" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="CHARG" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="TFWT" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Total First Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="TSWT" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Total Second Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="STNDTY" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Standard Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="TBWT" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Total Bag Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="NTGEW" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Total Net Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="STNDWT" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Standard Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="TFINWT" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Total Final Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="SEQ" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Version Number Component"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="MFRPN" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Mfr Part Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+			</EntityType>
+			<EntityType Name="DELETE" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="VBELN"/>
+					<PropertyRef Name="POSNR"/>
+				</Key>
+				<Property Name="VBELN" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:sortable="false"/>
+				<Property Name="POSNR" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item" sap:sortable="false"/>
+			</EntityType>
+			<EntityType Name="INVPCK" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="MATNR"/>
+				</Key>
+				<Property Name="MATNR" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/>
+				<Property Name="NTGEW" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="GEWEI"
+					sap:label="Net weight" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="GEWEI" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Weight unit" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+				<Property Name="MFRPN" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Mfr Part Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+			</EntityType>
+			<EntityType Name="ZMMSTST" m:HasStream="true" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="PALLET"/>
+				</Key>
+				<Property Name="PALLET" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PALLET" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="MIMETYPE" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="CONTENT" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="CONTENT" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+			</EntityType>
+			<EntityType Name="TEXT" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="VBELN"/>
+				</Key>
+				<Property Name="HTEXT1" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="HTEXT2" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="VBELN" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Delivery" sap:sortable="false"/>
+			</EntityType>
+			<EntityType Name="PRINT" sap:content-version="1">
+				<Key><PropertyRef Name="PALLET"/>
+					<PropertyRef Name="PRINTERN"/>
+				</Key>
+				<Property Name="PALLET" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Pallet" sap:sortable="false"/>
+				<Property Name="MSG" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="PRINTERN" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:sortable="false"/>
+			</EntityType>
+			<EntityType Name="PRINTER" sap:content-version="1">
+				<Key><PropertyRef Name="PRINTERN"/>
+					<PropertyRef Name="VBELN"/>
+					<PropertyRef Name="POSNR"/>
+				</Key>
+				<Property Name="PRINTERN" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:sortable="false"/>
+				<Property Name="DEF" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="VBELN" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:sortable="false"/>
+				<Property Name="POSNR" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:sortable="false"/>
+			</EntityType>
+			<Association Name="DELVHUASS" sap:content-version="1">
+				<End Type="ZMMO_MIGO_SRV.INVDET" Multiplicity="1" Role="FromRole_DELVHUASS"/>
+				<End Type="ZMMO_MIGO_SRV.INVDETHU" Multiplicity="*" Role="ToRole_DELVHUASS"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_DELVHUASS">
+						<PropertyRef Name="VBELN"/>
+					</Principal>
+					<Dependent Role="ToRole_DELVHUASS">
+						<PropertyRef Name="VBELN"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZMMO_MIGO_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="INVDETSet" EntityType="ZMMO_MIGO_SRV.INVDET" sap:searchable="true" sap:content-version="1"/>
+				<EntitySet Name="INVDETHUSet" EntityType="ZMMO_MIGO_SRV.INVDETHU" sap:searchable="true" sap:content-version="1"/>
+				<EntitySet Name="INVPCKSet" EntityType="ZMMO_MIGO_SRV.INVPCK" sap:searchable="true" sap:content-version="1"/>
+				<EntitySet Name="ZMMSTSTSet" EntityType="ZMMO_MIGO_SRV.ZMMSTST" sap:searchable="true" sap:content-version="1"/>
+				<EntitySet Name="TEXTSet" EntityType="ZMMO_MIGO_SRV.TEXT" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<EntitySet Name="PRINTERSet" EntityType="ZMMO_MIGO_SRV.PRINTER" sap:searchable="true" sap:content-version="1"/>
+				<EntitySet Name="PRINTSet" EntityType="ZMMO_MIGO_SRV.PRINT" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="DELVHUASSSet" Association="ZMMO_MIGO_SRV.DELVHUASS" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:content-version="1">
+					<End EntitySet="INVDETSet" Role="FromRole_DELVHUASS"/>
+					<End EntitySet="INVDETHUSet" Role="ToRole_DELVHUASS"/>
+				</AssociationSet>
+			</EntityContainer>
+			<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZMMO_MIGO_SRV/$metadata"/>
+			<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZMMO_MIGO_SRV/$metadata"/>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

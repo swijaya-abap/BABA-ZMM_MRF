@@ -1,0 +1,93 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:semantic="sap.m.semantic" xmlns="sap.m" xmlns:f="sap.ui.layout.form" controllerName="com.babaZMM_MRFINV.controller.Main"
+	displayBlock="true">
+	<App id="app">
+		<semantic:FullscreenPage id="page" title="{i18n>title}" busy="{objectView>/busy}" showNavButton="false">
+			<semantic:content>
+				<f:SimpleForm title="Inbound Delivery" layout="ResponsiveGridLayout" editable="true" labelSpanL="3" labelSpanM="3" emptySpanL="3"
+					emptySpanM="3" columnsL="1" columnsM="1">
+					<HBox>
+						<!--<l:VerticalLayout>-->
+						<Input width="auto" id="INVDELV" required="true"/>
+						<Button ariaLabelledBy="__xmlview0--label1" text="Press" width="auto" id="button2" press="onGet"/>
+						<!--</l:VerticalLayout>-->
+					</HBox>
+				</f:SimpleForm>
+				<Panel expandable="true" expanded="true" backgroundDesign="Solid">
+					<f:SimpleForm title="Delivery Details:" layout="ResponsiveGridLayout" editable="false" labelSpanL="2" labelSpanM="2" emptySpanL="1"
+						emptySpanM="1" columnsL="1">
+						<Label text="Vendor" design="Bold"/>
+						<Text id="LIFNRV" text="{LIFNRV}" width="auto"/>
+						<Label text="Bill of Lading" design="Bold"/>
+						<Text id="BOLNRV" text="{BOLNRV}" width="auto"/>
+						<Label text="PO No." id="EBELN" design="Bold"/>
+						<Text id="EBELNV" text="{EBELNV}" width="auto"/>
+						<Label text="Container ID" id="SIGNI" design="Bold"/>
+						<Text id="SIGNIV" text="{SIGNIV}" width="auto"/>
+						<Label text="Actual GR Date" id="DATEL" design="Bold"/>
+						<!--<DatePicker id="DATE" displayFormat="short" valueFormat="MM/dd/yyyy" width="40%"/>-->
+						<DatePicker id="DATE" width="auto" displayFormat="dd.MM.YYYY" valueFormat="dd.MM.YYYY" />
+						<Label text="Remarks" design="Bold"/>
+						<Input id="HTEXT1" width="50%"/>
+						<Label text="Unloaded By" design="Bold"/>
+						<Input id="HTEXT2" width="50%"/>
+					</f:SimpleForm>
+				</Panel>
+				<Table id="tab" noDataText="No Data found" items="{/data}" growing="true" growingScrollToLoad="true">
+					<columns>
+						<Column id="VBELNC">
+							<header>
+								<Label text="Delivery" id="__label1"/>
+							</header>
+						</Column>
+						<Column id="ITEMC">
+							<header>
+								<Label text="Item" id="__label2"/>
+							</header>
+						</Column>
+						<Column id="MATNRC">
+							<header>
+								<Label text="Material" id="__label3"/>
+							</header>
+						</Column>
+						<Column id="ONETWTC">
+							<header>
+								<Label text="Original Net Weight" id="__label6"/>
+							</header>
+						</Column>
+						<Column id="NETWTC">
+							<header>
+								<Label text="Net Weight" id="__label4"/>
+							</header>
+						</Column>
+						<Column id="CHARGC">
+							<header>
+								<Label text="Batch" id="__label5"/>
+							</header>
+						</Column>
+						<Column id="NOWTC" visible="false"></Column>
+					</columns>
+					<items>
+						<ColumnListItem id="itemlist" type="Navigation" press="onPress">
+							<cells>
+								<Text id="VBELN" text="{VBELN}"/>
+								<Text id="POSNR" text="{POSNR}"/>
+								<ObjectIdentifier id="MATNR" title="{MATNR}" text="{MAKTX}"/>
+								<ObjectNumber number="{ path: 'ONTGEW', formatter: '.formatter.numberUnit' }" unit="{GEWEI}"/>
+								<ObjectNumber number="{ path: 'NTGEW', formatter: '.formatter.numberUnit' }" unit="{GEWEI}"/>
+								<ObjectStatus id="CHARG" text="{CHARG}" state="{ path: 'CHARG' , formatter: '.formatter.colorval' }"/>
+								<Text id="NOWT" text="{NOWT}" visible="false"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</semantic:content>
+			<semantic:customFooterContent>
+				<Button ariaLabelledBy="__xmlview0--label1" width="50px" id="button3" press="onRefresh" tooltip="Refresh" icon="sap-icon://refresh"/>
+				<Button ariaLabelledBy="__xmlview0--label1" width="50px" id="button4" press="onText" tooltip="Save Text"
+					icon="sap-icon://attachment-text-file"/>
+				<Button ariaLabelledBy="__xmlview0--label1" width="50px" id="button1" press="onSave" tooltip="Post" icon="sap-icon://save"/>
+			</semantic:customFooterContent>
+		</semantic:FullscreenPage>
+	</App>
+</mvc:View>

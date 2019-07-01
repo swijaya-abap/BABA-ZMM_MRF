@@ -1,0 +1,118 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:f="sap.ui.layout.form" xmlns:semantic="sap.m.semantic" controllerName="com.babaZMM_MRFINV.controller.View" xmlns:l="sap.ui.layout"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+	<App id="app">
+		<semantic:FullscreenPage id="page1" title="MRF:Processing Screen" busy="{objectView>/busy}" showNavButton="false">
+			<semantic:content>
+				<f:SimpleForm title="Details" layout="ResponsiveGridLayout" editable="false" labelSpanL="2" labelSpanM="2" emptySpanL="1" emptySpanM="1"
+					columnsL="1">
+					<Label text="Delivery" design="Bold"/>
+					<Text id="VBELN" text="{VBELN}"/>
+					<Label text="Item" design="Bold"/>
+					<Text id="POSNR" text="{POSNR}"/>
+					<Text id="MATNR" text="{MATNR}" width="auto"/>
+					<Text id="NOWT" text="{NOWT}" width="auto" />
+				</f:SimpleForm>
+				<f:SimpleForm title="{i18n>Sum}" layout="ResponsiveGridLayout" editable="false" labelSpanL="2" labelSpanM="2" emptySpanL="1" emptySpanM="1"
+					columnsL="1">
+					<Label text="{i18n>SumBagWt}" design="Bold"/>
+					<Input id="STNDTY" value="{STNDTY}" textAlign="Right" type="Number" width="20%" change="onsubCal" required="true"/>
+					<Label text="{i18n>Totnobag}" design="Bold"/>
+					<Text id="TNBWT" text="{TNBWT}" textAlign="Right" width="20%"/>
+					<Label text="{i18n>TotBagWt}" design="Bold"/>
+					<Text id="TBWT" text="{TBWT}" textAlign="Right" width="20%"/>
+					<Label text="{i18n>Tot1stWt}" design="Bold"/>
+					<Text id="TFWT" text="{TFWT}" textAlign="Right" width="20%"/>
+					<Label text="{i18n>Tot2ndWt}" design="Bold"/>
+					<Text id="TSWT" text="{TSWT}" textAlign="Right" width="20%"/>
+					<Label text="{i18n>TotNetWt}" design="Bold"/>
+					<Text id="TNWT" text="{TNWT}" textAlign="Right" width="20%"/>
+					<Label text="{i18n>TotStnWt}" design="Bold"/>
+					<Text id="STNDWT" text="{STNDWT}" textAlign="Right" width="20%"/>
+					<Label text="{i18n>TotFinWt}" design="Bold"/>
+					<Text id="TFINWT" text="{TFINWT}" textAlign="Right" width="20%"/>
+					<Label text="Batch" design="Bold" required="true"/>
+					<Input id="CHARG" value="{CHARG}" width="20%" maxLength="10"/>
+					<Label text="Printer" design="Bold" required="true"/>
+					<ComboBox id="oSelect1" items="{ path: '/data' }" width="40%">
+						<core:Item key="{PRINTERN}" text="{PRINTERN}"/>
+					</ComboBox>
+					<!--<core:Title text="Batch"/>-->
+				</f:SimpleForm>
+				<f:SimpleForm title="Bag Type" layout="ResponsiveGridLayout" editable="false" labelSpanL="1" labelSpanM="1" emptySpanL="0" emptySpanM="0">
+					<SearchField id="BAGT" placeholder="Search for Bag Type" enableSuggestions="true" search="onSearch" suggest="onSuggest"
+						suggestionItems="{ path: '/INVPCKSet', parameters: {operationMode: 'Client'}}" width="auto">
+						<suggestionItems>
+							<SuggestionItem text="{MATNR}-{MFRPN}" key="{MATNR}"/>
+						</suggestionItems>
+					</SearchField>
+					<Button ariaLabelledBy="__xmlview0--label1" text="Update" width="35%" id="button5" press="onGet"/>
+					<l:VerticalLayout>
+						<Label text="Per/Unit(KG):" design="Bold" width="auto"/>
+						<Text id="BAGWTP" text="{BAGWTP}" width="auto"/>
+					</l:VerticalLayout>
+				</f:SimpleForm>
+				<Table id="tab" noDataText="No HU found" items="{/data}" growing="false" mode="MultiSelect" growingScrollToLoad="false" fixedLayout="false"
+					width="100%" showSeparators="All">
+					<columns>
+						<Column id="PALLETC" hAlign="Center">
+							<header>
+								<Label text="Pallet" id="__label1"/>
+							</header>
+						</Column>
+						<Column id="NOBAGC" hAlign="Center">
+							<header>
+								<Label text="No. of Bags" id="__label2"/>
+							</header>
+						</Column>
+						<Column id="FWEIGHTC" hAlign="Center">
+							<header>
+								<Label text="1st Weight" id="__label3"/>
+							</header>
+						</Column>
+						<Column id="SWEIGHTC" hAlign="Center">
+							<header>
+								<Label text="2nd Weight" id="__label4"/>
+							</header>
+						</Column>
+						<Column id="PWEIGHTC" hAlign="Center">
+							<header>
+								<Label text="Pallet Weight" id="__label5"/>
+							</header>
+						</Column>
+						<Column id="BWEIGHTC" hAlign="Center">
+							<header>
+								<Label text="Bag Weight" id="__label6"/>
+							</header>
+						</Column>
+						<Column id="Seq" hAlign="Center" visible="false">
+							<header>
+								<Label text="SEQC" id="__label8"/>
+							</header>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="itemlist">
+							<cells>
+								<Input id="PALLET" value="{PALLET}" textAlign="Left" width="auto" editable="false"/>
+								<Input id="NOBAG" value="{NOBAG}" textAlign="Right" editable="true" maxLength="4" width="auto" type="Number" change="onCal"/>
+								<Input id="FWT" value="{FWEIGHT}" textAlign="Right" editable="true" width="auto" type="Number" change="onCal"/>
+								<Input id="SWT" value="{SWEIGHT}" textAlign="Right" editable="true" width="auto" type="Number" change="onCal"/>
+								<Input id="PWT" value="{PWEIGHT}" textAlign="Right" editable="true" width="auto" type="Number" change="onCal"/>
+								<Input id="BWT" value="{BAGWT}" textAlign="Right" width="auto" editable="false"/>
+								<!--<Input id="NWT" value="{ path: 'NTGEW' , formatter: '.formatter.colorval' }" textAlign="Right" width="auto" editable="false"/>-->
+								<Input id="SEQ" value="{SEQ}" textAlign="Left" width="auto" editable="false" maxLength="2" visible="false"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</semantic:content>
+			<semantic:customFooterContent>
+				<Button ariaLabelledBy="__xmlview0--label1" width="50px" id="button2" press="onAdd" icon="sap-icon://add"/>
+				<Button ariaLabelledBy="__xmlview0--label1" width="50px" id="button3" press="onDel" icon="sap-icon://less"/>
+				<Button ariaLabelledBy="__xmlview0--label1" width="50px" id="button6" press="onPri" icon="sap-icon://print"/>
+				<Button ariaLabelledBy="__xmlview0--label1" width="50px" id="button1" press="onSave" tooltip="{i18n>Save}" icon="sap-icon://save"/>
+			</semantic:customFooterContent>
+		</semantic:FullscreenPage>
+	</App>
+</mvc:View>
