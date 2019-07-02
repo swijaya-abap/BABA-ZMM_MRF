@@ -34,7 +34,7 @@ sap.ui.define([
 
 		_onObjectMatched: function (oEvent) {
 			var that = this;
-			var CHARG, BAGTYP, BRGEW, NTGEW, TFWT, TSWT, STNDWT, STNDTY, TFINWT, TBWT, MFRPN, TOTBAG = 0;
+			var CHARG, VFDAT, BAGTYP, BRGEW, NTGEW, TFWT, TSWT, STNDWT, STNDTY, TFINWT, TBWT, MFRPN, TOTBAG = 0;
 			var sObjectId = oEvent.getParameter("arguments").objectId;
 			var sObjectLn = oEvent.getParameter("arguments").objectLn;
 			var sObjectMat = oEvent.getParameter("arguments").objectMat;
@@ -106,6 +106,7 @@ sap.ui.define([
 							};
 							if (iRowIndex === 0) {
 								CHARG = res[iRowIndex].CHARG;
+								VFDAT = res[iRowIndex].VFDAT;
 								BAGTYP = res[iRowIndex].BAGTYP;
 								MFRPN = res[iRowIndex].MFRPN;
 								BRGEW = res[iRowIndex].BRGEW;
@@ -123,6 +124,7 @@ sap.ui.define([
 
 								BAGTYP = BAGTYP + "-" + MFRPN;
 								that.getView().byId("CHARG").setValue(CHARG);
+								that.getView().byId("VFDAT").setValue(VFDAT);
 								that.getView().byId("BAGT").setValue(BAGTYP);
 								that.getView().byId("BAGWTP").setText(BRGEW);
 								that.getView().byId("TFWT").setText(TFWT);
@@ -309,7 +311,7 @@ sap.ui.define([
 		},
 
 		onCal: function (oControlEvent) {
-			debugger;
+			
 			var that = this;
 			var oRow = oControlEvent.getSource().getParent();
 			var NUM_DECIMAL_PLACES = 3;
@@ -636,6 +638,7 @@ sap.ui.define([
 
 					var l_brgew = that.getView().byId("BAGWTP").getText();
 					var l_charg = that.getView().byId("CHARG").getValue();
+					var l_vfdat = that.getView().byId("VFDAT").getValue();
 					var l_tfwt = that.getView().byId("TFWT").getText();
 					var l_tswt = that.getView().byId("TSWT").getText();
 					var l_stndty = that.getView().byId("STNDTY").getValue();
@@ -710,6 +713,7 @@ sap.ui.define([
 							oEntry.PWEIGHT = l_pweight;
 							oEntry.NOBAG = l_nobag;
 							oEntry.CHARG = l_charg;
+							oEntry.VFDAT = l_vfdat;
 							oEntry.TFWT = l_tfwt;
 							oEntry.TSWT = l_tswt;
 							oEntry.STNDTY = l_stndty;
