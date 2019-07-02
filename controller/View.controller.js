@@ -172,7 +172,6 @@ sap.ui.define([
 			that.getView().byId("NOWT").setText(sObjectNowt);
 
 			that.getView().byId("CHARG").setValue(CHARG);
-
 			that.getView().byId("VFDAT").setValue(VFDAT);
 			that.getView().byId("BAGT").setValue(BAGTYP);
 			that.getView().byId("BAGWTP").setText(BRGEW);
