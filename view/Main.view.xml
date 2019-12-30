@@ -26,7 +26,7 @@
 						<Text id="SIGNIV" text="{SIGNIV}" width="auto"/>
 						<Label text="Actual GR Date" id="DATEL" design="Bold"/>
 						<!--<DatePicker id="DATE" displayFormat="short" valueFormat="MM/dd/yyyy" width="40%"/>-->
-						<DatePicker id="DATE" width="auto" displayFormat="dd.MM.YYYY" valueFormat="dd.MM.YYYY" />
+						<DatePicker id="DATE" width="auto" displayFormat="short" valueFormat="MM/dd/yyyy" />
 						<Label text="Remarks" design="Bold"/>
 						<Input id="HTEXT1" width="50%"/>
 						<Label text="Unloaded By" design="Bold"/>

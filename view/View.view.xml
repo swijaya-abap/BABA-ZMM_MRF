@@ -34,7 +34,7 @@
 					<Label text="Batch" design="Bold" required="true"/>
 					<Input id="CHARG" value="{CHARG}" width="20%" maxLength="10"/>
 					<Label text="Expiry Date" design="Bold"/>
-					<DatePicker id="VFDAT" value="{VFDAT}" width="20%" maxLength="10" displayFormat="dd.MM.yyyy" valueFormat="dd.MM.yyyy"/>
+					<DatePicker id="VFDAT" value="{VFDAT}" width="20%" maxLength="10" displayFormat="short" valueFormat="MM/dd/yyyy"/>
 					<Label text="Printer" design="Bold" required="true"/>
 					<ComboBox id="oSelect1" items="{ path: '/data' }" width="40%">
 						<core:Item key="{PRINTERN}" text="{PRINTERN}"/>

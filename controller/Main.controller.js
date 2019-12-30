@@ -223,7 +223,7 @@ sap.ui.define([
 
 					var l_htext1 = that.getView().byId("HTEXT1").getValue();
 					var l_htext2 = that.getView().byId("HTEXT2").getValue();
-					var l_date   = that.getView().byId("DATE").getValue();
+					var l_date   = this._convertDateToSAP(that.getView().byId("DATE").getValue());
 
 					for (var iRowIndex = 0; iRowIndex < aItems.length; iRowIndex++) {
 						var l_vbeln = aItems[iRowIndex].getCells()[0].getText();
@@ -254,6 +254,13 @@ sap.ui.define([
 				}
 			}
 		}
+
+		_convertDateToSAP: function (e) {
+			var t = sap.ui.core.format.DateFormat.getDateInstance({
+				pattern: "dd.MM.yyyy"
+			});
+			return t.format(new Date(e))
+		},
 
 		///////////////////////////
 	});

@@ -639,7 +639,7 @@ sap.ui.define([
 
 					var l_brgew = that.getView().byId("BAGWTP").getText();
 					var l_charg = that.getView().byId("CHARG").getValue();
-					var l_vfdat = that.getView().byId("VFDAT").getValue();
+					var l_vfdat = this._convertDateToSAP(that.getView().byId("VFDAT").getValue());
 					var l_tfwt = that.getView().byId("TFWT").getText();
 					var l_tswt = that.getView().byId("TSWT").getText();
 					var l_stndty = that.getView().byId("STNDTY").getValue();
@@ -796,6 +796,13 @@ sap.ui.define([
 			oRouter.navTo("Main");
 			// }
 		}
+
+		_convertDateToSAP: function (e) {
+			var t = sap.ui.core.format.DateFormat.getDateInstance({
+				pattern: "dd.MM.yyyy"
+			});
+			return t.format(new Date(e))
+		},
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
