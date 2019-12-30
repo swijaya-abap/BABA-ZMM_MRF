@@ -20,7 +20,9 @@
 				"settings": {
 					"odataVersion": "2.0",
 					"localUri": "localService/metadata.xml",
-					"annotations": ["ODataAnnotation1"]
+					"annotations": [
+						"ODataAnnotation1"
+					]
 				}
 			},
 			"ODataAnnotation1": {
@@ -47,7 +49,10 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": ["sap_hcb", "sap_belize"]
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -89,9 +94,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -118,24 +125,32 @@
 					"viewLevel": 2
 				}
 			},
-			"routes": [{
-				"name": "Main",
-				"pattern": "",
-				"titleTarget": "",
-				"greedy": false,
-				"target": ["Main"]
-			}, {
-				"name": "View",
-				"pattern": "INVDETSet/{objectId}/{objectLn}/{objectMat}/{objectNowt}",
-				"titleTarget": "",
-				"greedy": false,
-				"target": ["View"]
-			}, {
-				"name": "route name",
-				"pattern": "",
-				"titleTarget": "",
-				"greedy": false
-			}]
+			"routes": [
+				{
+					"name": "Main",
+					"pattern": "",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"Main"
+					]
+				},
+				{
+					"name": "View",
+					"pattern": "INVDETSet/{objectId}/{objectLn}/{objectMat}/{objectNowt}",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"View"
+					]
+				},
+				{
+					"name": "route name",
+					"pattern": "",
+					"titleTarget": "",
+					"greedy": false
+				}
+			]
 		}
 	},
 	"sap.platform.abap": {
