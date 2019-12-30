@@ -795,7 +795,7 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("Main");
 			// }
-		}
+		},
 
 		_convertDateToSAP: function (e) {
 			var t = sap.ui.core.format.DateFormat.getDateInstance({

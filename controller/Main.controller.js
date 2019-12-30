@@ -253,7 +253,7 @@ sap.ui.define([
 					});
 				}
 			}
-		}
+		},
 
 		_convertDateToSAP: function (e) {
 			var t = sap.ui.core.format.DateFormat.getDateInstance({
